@@ -11,7 +11,7 @@ function StarRating({ rating }) {
       {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
-          className={`w-4 h-4 ${i < rating ? 'text-amber-400 fill-amber-400' : 'text-slate-300 dark:text-slate-600'}`}
+          className={`w-3.5 h-3.5 ${i < rating ? 'text-amber-400 fill-amber-400' : 'text-slate-700'}`}
         />
       ))}
     </div>
@@ -37,42 +37,42 @@ export default function Testimonials() {
   const next = () => setCurrent(c => (c + 1) % displayList.length);
 
   return (
-    <section className="py-20 bg-slate-50 dark:bg-slate-900/50">
+    <section className="py-24 bg-[#06080F]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           eyebrow="Client Stories"
-          title="What Our Clients Say"
-          description="Don't take our word for it — hear from the leaders we've helped achieve breakthrough results."
+          title="Results That Speak for Themselves"
+          description="Hear directly from the executives and teams we've partnered with to achieve transformational outcomes."
         />
 
-        <div className="mt-12 max-w-4xl mx-auto">
+        <div className="mt-14 max-w-3xl mx-auto">
           {loading ? (
             <LoadingSpinner className="py-16" text="Loading testimonials..." />
           ) : displayList.length === 0 ? (
-            <p className="text-center text-slate-500 py-12">No testimonials yet.</p>
+            <p className="text-center text-slate-600 py-12">No testimonials yet.</p>
           ) : (
             <>
               <div className="relative overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={current}
-                    initial={{ opacity: 0, x: 60 }}
+                    initial={{ opacity: 0, x: 40 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -60 }}
-                    transition={{ duration: 0.4 }}
-                    className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-8 md:p-10 shadow-sm"
+                    exit={{ opacity: 0, x: -40 }}
+                    transition={{ duration: 0.35 }}
+                    className="bg-[#0D1117] rounded-2xl border border-slate-800 p-8 md:p-10"
                   >
-                    <Quote className="w-10 h-10 text-blue-200 dark:text-blue-900 mb-6" />
-                    <p className="text-lg md:text-xl text-slate-700 dark:text-slate-200 leading-relaxed mb-8 italic">
+                    <Quote className="w-9 h-9 text-indigo-500/30 mb-6" />
+                    <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-8 font-light">
                       "{displayList[current].text}"
                     </p>
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
                         {displayList[current].name.charAt(0)}
                       </div>
                       <div>
-                        <div className="font-bold text-slate-900 dark:text-white">{displayList[current].name}</div>
-                        <div className="text-sm text-slate-500 dark:text-slate-400">
+                        <div className="font-semibold text-slate-100 font-display">{displayList[current].name}</div>
+                        <div className="text-sm text-slate-500">
                           {displayList[current].role}, {displayList[current].company}
                         </div>
                         <StarRating rating={displayList[current].rating} />
@@ -83,27 +83,27 @@ export default function Testimonials() {
               </div>
 
               {/* Controls */}
-              <div className="flex items-center justify-center gap-4 mt-8">
+              <div className="flex items-center justify-center gap-4 mt-7">
                 <button
                   onClick={prev}
-                  className="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                  className="w-9 h-9 rounded-full border border-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-200 hover:border-slate-600 transition-all"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-4 h-4" />
                 </button>
-                <div className="flex gap-2">
+                <div className="flex gap-1.5">
                   {displayList.map((_, i) => (
                     <button
                       key={i}
                       onClick={() => setCurrent(i)}
-                      className={`h-2 rounded-full transition-all ${i === current ? 'w-6 bg-blue-600' : 'w-2 bg-slate-300 dark:bg-slate-600'}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${i === current ? 'w-6 bg-indigo-500' : 'w-1.5 bg-slate-700'}`}
                     />
                   ))}
                 </div>
                 <button
                   onClick={next}
-                  className="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                  className="w-9 h-9 rounded-full border border-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-200 hover:border-slate-600 transition-all"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
             </>

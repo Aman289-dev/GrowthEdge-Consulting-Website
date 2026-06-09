@@ -1,91 +1,92 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Linkedin, Heart, Lightbulb, Award, Handshake, Target, Eye } from 'lucide-react';
+import { ChevronRight, Linkedin, Zap, Eye, Award, Handshake, Target, Shield } from 'lucide-react';
 import SectionHeader from '../components/ui/SectionHeader';
 import AnimatedCounter from '../components/ui/AnimatedCounter';
 import { STATS } from '../utils/constants';
 
 const timeline = [
-  { year: '2009', event: 'Founded', desc: 'GrowthEdge was founded by Dr. James Okafor with a vision to make enterprise-quality strategy accessible to ambitious mid-market companies.' },
-  { year: '2012', event: 'First 100 Clients', desc: 'Reached the milestone of 100 satisfied clients across retail, finance, and professional services. Expanded team to 15 consultants.' },
-  { year: '2015', event: 'Expanded to Digital', desc: 'Launched dedicated Digital Transformation practice to help clients navigate the accelerating shift to digital-first business models.' },
-  { year: '2018', event: 'Global Reach', desc: 'Opened offices in London and Singapore. Now serving clients across 18 countries with a team of 35 consultants.' },
-  { year: '2021', event: '$1B Revenue Milestone', desc: 'Reached the milestone of $1 billion in cumulative client revenue generated through GrowthEdge engagements.' },
-  { year: '2024', event: '500+ Clients', desc: 'Celebrating 500+ clients served and launching new AI-augmented strategy capabilities to deliver even greater value.' },
+  { year: '2006', event: 'Founded in NYC', desc: 'NexaEdge was founded by Dr. Aria Patel with a bold vision: to build the world\'s most technologically advanced consulting practice.' },
+  { year: '2010', event: 'First 50 Enterprises', desc: 'Reached 50 enterprise clients. Launched dedicated Technology Strategy practice, ahead of the cloud revolution.' },
+  { year: '2014', event: 'Global Expansion', desc: 'Opened innovation hubs in London, Singapore, and Toronto. Grew core team to 30 senior practitioners.' },
+  { year: '2018', event: 'AI Practice Launch', desc: 'Became one of the first consulting firms globally to build a dedicated AI & Machine Learning Strategy practice.' },
+  { year: '2021', event: '$3B Value Milestone', desc: 'Surpassed $3B in cumulative enterprise value created for clients through NexaEdge-led transformations.' },
+  { year: '2025', event: '750+ Transformations', desc: 'Celebrating 750+ successful enterprise engagements and launching next-gen AI-augmented strategy platform.' },
 ];
 
 const values = [
-  { icon: Heart, title: 'Integrity', desc: 'We say what we mean and do what we say. Our clients trust us because we\'ve earned it over 15 years of honest counsel.', color: 'text-red-500 bg-red-50 dark:bg-red-900/30' },
-  { icon: Lightbulb, title: 'Innovation', desc: 'We constantly challenge conventional thinking and bring fresh perspectives that create genuine competitive advantage.', color: 'text-amber-500 bg-amber-50 dark:bg-amber-900/30' },
-  { icon: Award, title: 'Excellence', desc: 'Average is never good enough. We hold ourselves to the highest standards in everything we do.', color: 'text-blue-500 bg-blue-50 dark:bg-blue-900/30' },
-  { icon: Handshake, title: 'Partnership', desc: 'We succeed when our clients succeed. Every engagement is a genuine partnership, not a vendor relationship.', color: 'text-green-500 bg-green-50 dark:bg-green-900/30' },
-  { icon: Target, title: 'Impact', desc: 'We\'re not satisfied with recommendations—we measure ourselves by the actual business results we help create.', color: 'text-purple-500 bg-purple-50 dark:bg-purple-900/30' },
-  { icon: Eye, title: 'Transparency', desc: 'We communicate clearly and honestly, even when the message is difficult. Our clients always know exactly where they stand.', color: 'text-indigo-500 bg-indigo-50 dark:bg-indigo-900/30' },
+  { icon: Shield, title: 'Integrity First', desc: 'We give you the truth, even when it\'s uncomfortable. Our clients trust us because we have never compromised on honest counsel.', color: 'text-indigo-400 bg-indigo-500/10' },
+  { icon: Zap, title: 'Radical Innovation', desc: 'We constantly challenge convention. Our research and methodologies are years ahead of standard consulting approaches.', color: 'text-cyan-400 bg-cyan-500/10' },
+  { icon: Award, title: 'Uncompromising Excellence', desc: 'Good is never good enough. Every deliverable, every insight, every engagement is held to the highest possible standard.', color: 'text-amber-400 bg-amber-500/10' },
+  { icon: Handshake, title: 'True Partnership', desc: 'We succeed when our clients succeed. Every engagement is a genuine partnership — we share the risk and the reward.', color: 'text-emerald-400 bg-emerald-500/10' },
+  { icon: Target, title: 'Outcome Obsession', desc: 'We measure ourselves by results, not deliverables. Strategy without execution is just theory — we deliver tangible impact.', color: 'text-violet-400 bg-violet-500/10' },
+  { icon: Eye, title: 'Full Transparency', desc: 'No hidden agendas, no opaque pricing, no surprises. Our clients always know exactly what we\'re doing and why.', color: 'text-rose-400 bg-rose-500/10' },
 ];
 
 const team = [
-  { name: 'Dr. James Okafor', role: 'CEO & Founder', initials: 'JO', color: 'from-blue-600 to-blue-800' },
-  { name: 'Sarah Chen', role: 'COO', initials: 'SC', color: 'from-purple-600 to-purple-800' },
-  { name: 'Michael Harrison', role: 'Strategy Director', initials: 'MH', color: 'from-indigo-600 to-indigo-800' },
-  { name: 'Rachel Torres', role: 'Digital Lead', initials: 'RT', color: 'from-cyan-600 to-cyan-800' },
-  { name: 'Amanda Rodriguez', role: 'Finance Director', initials: 'AR', color: 'from-green-600 to-green-800' },
-  { name: 'David Park', role: 'Operations Head', initials: 'DP', color: 'from-orange-600 to-orange-800' },
-  { name: 'Lisa Thompson', role: 'Marketing Lead', initials: 'LT', color: 'from-pink-600 to-pink-800' },
-  { name: 'Kevin Walsh', role: 'HR Director', initials: 'KW', color: 'from-teal-600 to-teal-800' },
+  { name: 'Dr. Aria Patel', role: 'CEO & Founder', initials: 'AP', color: 'from-indigo-500 to-violet-600' },
+  { name: 'Marcus Chen', role: 'CTO & Co-Founder', initials: 'MC', color: 'from-cyan-500 to-blue-600' },
+  { name: 'Sofia Reyes', role: 'Chief Strategy Officer', initials: 'SR', color: 'from-violet-500 to-indigo-600' },
+  { name: 'James Okonkwo', role: 'Head of AI Practice', initials: 'JO', color: 'from-emerald-500 to-cyan-600' },
+  { name: 'Priya Sharma', role: 'Growth Director', initials: 'PS', color: 'from-amber-500 to-orange-600' },
+  { name: 'Daniel Kim', role: 'Data Intelligence Lead', initials: 'DK', color: 'from-blue-500 to-indigo-600' },
+  { name: 'Emma Walsh', role: 'Operations Director', initials: 'EW', color: 'from-rose-500 to-pink-600' },
+  { name: 'Luca Moretti', role: 'Client Success Lead', initials: 'LM', color: 'from-teal-500 to-emerald-600' },
 ];
 
-const container = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
-const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
+const container = { hidden: {}, show: { transition: { staggerChildren: 0.07 } } };
+const item = { hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } };
 
 export default function About({ onBookConsultation }) {
-  useEffect(() => { document.title = 'About Us — GrowthEdge Consulting'; }, []);
+  useEffect(() => { document.title = 'About NexaEdge — AI-Powered Consulting Firm'; }, []);
 
   return (
-    <main className="pt-16">
+    <main className="pt-16 bg-[#06080F]">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-blue-900 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 text-blue-300 text-sm mb-6">
-            <Link to="/" className="hover:text-white transition-colors">Home</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-white">About</span>
+      <section className="relative bg-hero-dark py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-60" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 text-slate-600 text-sm mb-6">
+            <Link to="/" className="hover:text-slate-300 transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <span className="text-slate-400">About</span>
           </div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl sm:text-5xl font-extrabold text-white mb-4"
+            className="text-4xl sm:text-5xl font-display font-bold text-white mb-4"
           >
-            About GrowthEdge
+            About <span className="text-gradient">NexaEdge</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-xl text-blue-200 max-w-2xl"
+            className="text-lg text-slate-400 max-w-2xl"
           >
-            15 years of helping ambitious leaders build businesses that matter.
+            18 years at the intersection of technology and business strategy. Building tomorrow's enterprises, today.
           </motion.p>
         </div>
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-white dark:bg-slate-900">
+      <section className="py-20 bg-[#06080F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader eyebrow="Our Purpose" title="Mission & Vision" />
-          <div className="mt-12 grid md:grid-cols-2 gap-8">
+          <div className="mt-12 grid md:grid-cols-2 gap-6">
             {[
               {
                 label: 'Our Mission',
-                title: 'Empowering Strategic Clarity',
-                text: 'To empower businesses with strategic clarity, operational excellence, and the confidence to pursue bold growth. We partner with leaders who believe the best version of their company is still ahead, and we do the hard work required to get them there.',
-                gradient: 'from-blue-500 to-blue-700',
+                title: 'Intelligence That Drives Growth',
+                text: 'To empower forward-thinking enterprises with the AI-powered strategy, digital capabilities, and organizational intelligence needed to achieve exponential, sustainable growth. We partner with leaders who believe their best chapter is still unwritten.',
+                gradient: 'from-indigo-500 to-violet-500',
               },
               {
                 label: 'Our Vision',
-                title: 'The Most Trusted Growth Partner',
-                text: 'To be the most trusted growth partner for ambitious businesses globally — known not for the strategy decks we produce, but for the transformations we enable and the lasting capabilities we build in every organization we touch.',
-                gradient: 'from-amber-500 to-amber-700',
+                title: 'The World\'s Most Trusted Transformation Partner',
+                text: 'To be the global benchmark for enterprise transformation — recognized not for the decks we produce, but for the breakthroughs we enable and the lasting competitive advantages we build for every organization we touch.',
+                gradient: 'from-cyan-500 to-blue-500',
               },
             ].map(({ label, title, text, gradient }, i) => (
               <motion.div
@@ -93,14 +94,14 @@ export default function About({ onBookConsultation }) {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 overflow-hidden shadow-sm"
+                transition={{ duration: 0.5, delay: i * 0.12 }}
+                className="bg-[#0D1117] rounded-2xl border border-slate-800 overflow-hidden"
               >
-                <div className={`h-2 bg-gradient-to-r ${gradient}`} />
+                <div className={`h-1 bg-gradient-to-r ${gradient}`} />
                 <div className="p-8">
-                  <span className="text-xs font-semibold tracking-widest uppercase text-slate-400 mb-3 block">{label}</span>
-                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">{title}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{text}</p>
+                  <span className="text-xs font-semibold tracking-widest uppercase text-slate-600 mb-3 block">{label}</span>
+                  <h3 className="text-xl font-display font-bold text-white mb-4">{title}</h3>
+                  <p className="text-slate-500 leading-relaxed text-sm">{text}</p>
                 </div>
               </motion.div>
             ))}
@@ -109,27 +110,27 @@ export default function About({ onBookConsultation }) {
       </section>
 
       {/* Timeline */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-900/50">
+      <section className="py-20 bg-[#06080F]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader eyebrow="Our Journey" title="The GrowthEdge Story" />
+          <SectionHeader eyebrow="Our Journey" title="The NexaEdge Story" />
           <div className="mt-12 relative">
-            <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-slate-700 transform sm:-translate-x-px" />
+            <div className="absolute left-4 sm:left-1/2 top-0 bottom-0 w-px bg-slate-800 transform sm:-translate-x-px" />
             <div className="space-y-8">
-              {timeline.map((item, i) => (
+              {timeline.map((tl, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  transition={{ duration: 0.45, delay: i * 0.08 }}
                   className={`relative flex items-start gap-6 sm:gap-0 ${i % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'}`}
                 >
-                  <div className="absolute left-4 sm:left-1/2 w-3 h-3 bg-blue-600 rounded-full border-2 border-white dark:border-slate-900 transform sm:-translate-x-1.5 mt-2 z-10" />
+                  <div className="absolute left-4 sm:left-1/2 w-3 h-3 bg-indigo-500 rounded-full border-2 border-[#06080F] transform sm:-translate-x-1.5 mt-2 z-10 shadow-lg shadow-indigo-500/40" />
                   <div className={`pl-12 sm:pl-0 sm:w-1/2 ${i % 2 === 0 ? 'sm:pr-12 sm:text-right' : 'sm:pl-12'}`}>
-                    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 p-5 shadow-sm">
-                      <span className="text-blue-600 dark:text-blue-400 font-bold text-lg">{item.year}</span>
-                      <h4 className="font-bold text-slate-900 dark:text-white mt-1">{item.event}</h4>
-                      <p className="text-slate-600 dark:text-slate-400 text-sm mt-2 leading-relaxed">{item.desc}</p>
+                    <div className="bg-[#0D1117] rounded-xl border border-slate-800 p-5">
+                      <span className="text-indigo-400 font-bold text-base font-display">{tl.year}</span>
+                      <h4 className="font-semibold text-slate-100 mt-1 text-sm">{tl.event}</h4>
+                      <p className="text-slate-500 text-xs mt-2 leading-relaxed">{tl.desc}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -140,7 +141,7 @@ export default function About({ onBookConsultation }) {
       </section>
 
       {/* Core Values */}
-      <section className="py-20 bg-white dark:bg-slate-900">
+      <section className="py-20 bg-[#06080F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader eyebrow="What We Stand For" title="Our Core Values" />
           <motion.div
@@ -148,19 +149,19 @@ export default function About({ onBookConsultation }) {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
           >
             {values.map(({ icon: Icon, title, desc, color }, i) => (
               <motion.div
                 key={i}
                 variants={item}
-                className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-6 shadow-sm"
+                className="bg-[#0D1117] rounded-2xl border border-slate-800 p-6 hover:border-slate-700 transition-all"
               >
-                <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${color}`}>
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-4 ${color}`}>
                   <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="font-bold text-slate-900 dark:text-white mb-2">{title}</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{desc}</p>
+                <h3 className="font-display font-bold text-slate-100 mb-2 text-sm">{title}</h3>
+                <p className="text-slate-500 text-xs leading-relaxed">{desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -168,29 +169,33 @@ export default function About({ onBookConsultation }) {
       </section>
 
       {/* Team */}
-      <section id="team" className="py-20 bg-slate-50 dark:bg-slate-900/50">
+      <section id="team" className="py-20 bg-[#06080F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeader eyebrow="Our People" title="Meet the Leadership Team" description="Experienced leaders with deep expertise across strategy, operations, technology, and finance." />
+          <SectionHeader
+            eyebrow="Our People"
+            title="Meet the Leadership Team"
+            description="Senior practitioners, AI researchers, and industry veterans who've shaped the world's most innovative enterprises."
+          />
           <motion.div
             variants={container}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6"
+            className="mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"
           >
             {team.map(({ name, role, initials, color }, i) => (
               <motion.div
                 key={i}
                 variants={item}
                 whileHover={{ y: -4 }}
-                className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 p-6 shadow-sm text-center transition-all duration-300 hover:shadow-lg"
+                className="bg-[#0D1117] rounded-2xl border border-slate-800 p-6 text-center transition-all duration-300 hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/5"
               >
-                <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${color} flex items-center justify-center text-white font-bold text-xl mx-auto mb-4`}>
+                <div className={`w-14 h-14 rounded-full bg-gradient-to-br ${color} flex items-center justify-center text-white font-bold text-lg mx-auto mb-4`}>
                   {initials}
                 </div>
-                <h4 className="font-bold text-slate-900 dark:text-white text-sm">{name}</h4>
-                <p className="text-slate-500 dark:text-slate-400 text-xs mt-1">{role}</p>
-                <a href="#" className="inline-flex items-center justify-center w-7 h-7 bg-blue-100 dark:bg-blue-900/40 rounded-lg mt-3 text-blue-600 dark:text-blue-400 hover:bg-blue-200 transition-colors">
+                <h4 className="font-display font-semibold text-slate-200 text-sm">{name}</h4>
+                <p className="text-slate-600 text-xs mt-1">{role}</p>
+                <a href="#" className="inline-flex items-center justify-center w-7 h-7 bg-indigo-500/10 rounded-lg mt-3 text-indigo-400 hover:bg-indigo-500/20 transition-colors">
                   <Linkedin className="w-3.5 h-3.5" />
                 </a>
               </motion.div>
@@ -200,7 +205,7 @@ export default function About({ onBookConsultation }) {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-slate-900 dark:bg-slate-950">
+      <section className="py-16 bg-[#06080F] border-t border-slate-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {STATS.map((stat, i) => (
@@ -209,13 +214,13 @@ export default function About({ onBookConsultation }) {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="text-center"
               >
-                <div className="text-3xl sm:text-4xl font-extrabold text-white mb-2">
+                <div className="text-3xl sm:text-4xl font-display font-bold text-gradient mb-2">
                   <AnimatedCounter value={stat.value} prefix={stat.prefix || ''} suffix={stat.suffix || ''} decimals={stat.value % 1 !== 0 ? 1 : 0} />
                 </div>
-                <div className="text-slate-400 text-sm font-medium">{stat.label}</div>
+                <div className="text-slate-500 text-sm">{stat.label}</div>
               </motion.div>
             ))}
           </div>

@@ -9,16 +9,16 @@ import api from '../utils/api';
 import { BLOG_CATEGORIES } from '../utils/constants';
 
 const categoryColors = {
-  Strategy: 'blue', Digital: 'indigo', Leadership: 'purple',
-  Finance: 'green', Operations: 'orange', Growth: 'amber',
+  'AI & Tech': 'indigo', Strategy: 'violet', Leadership: 'rose',
+  Growth: 'cyan', Data: 'emerald', Operations: 'amber',
 };
 
 function BlogCard({ post, featured = false }) {
-  const color = categoryColors[post.category] || 'blue';
+  const color = categoryColors[post.category] || 'indigo';
   const gradients = {
-    blue: 'from-blue-500 to-blue-700', indigo: 'from-indigo-500 to-indigo-700',
-    purple: 'from-purple-500 to-purple-700', green: 'from-green-500 to-green-700',
-    orange: 'from-orange-500 to-orange-700', amber: 'from-amber-500 to-amber-700',
+    indigo: 'from-indigo-600 to-violet-700', violet: 'from-violet-600 to-indigo-700',
+    rose: 'from-rose-600 to-pink-700', cyan: 'from-cyan-600 to-blue-700',
+    emerald: 'from-emerald-600 to-cyan-700', amber: 'from-amber-600 to-orange-700',
   };
 
   if (featured) {
@@ -27,35 +27,35 @@ function BlogCard({ post, featured = false }) {
         <motion.article
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300"
+          className="bg-[#0D1117] rounded-2xl border border-slate-800 overflow-hidden hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/5 transition-all duration-300"
         >
-          <div className={`h-48 bg-gradient-to-br ${gradients[color] || gradients.blue} flex items-center justify-center relative`}>
-            <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%221%22%3E%3Ccircle%20cx%3D%221%22%20cy%3D%221%22%20r%3D%221%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')]" />
-            <span className="text-white/30 text-8xl font-extrabold">{post.category?.[0]}</span>
+          <div className={`h-48 bg-gradient-to-br ${gradients[color] || gradients.indigo} flex items-center justify-center relative overflow-hidden`}>
+            <div className="absolute inset-0 bg-grid opacity-30" />
+            <span className="text-white/10 text-9xl font-display font-bold">{post.category?.[0]}</span>
           </div>
           <div className="p-6 md:p-8">
             <div className="flex items-center gap-3 mb-3">
               <Badge color={color}>{post.category}</Badge>
-              <span className="text-xs text-slate-400 dark:text-slate-500 flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5" />{post.readTime} min read
+              <span className="text-xs text-slate-600 flex items-center gap-1">
+                <Clock className="w-3 h-3" />{post.readTime} min read
               </span>
             </div>
-            <h2 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h2 className="text-xl md:text-2xl font-display font-bold text-slate-100 mb-3 group-hover:text-indigo-300 transition-colors">
               {post.title}
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-4 line-clamp-2">{post.excerpt}</p>
+            <p className="text-slate-500 leading-relaxed mb-5 line-clamp-2 text-sm">{post.excerpt}</p>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-xs font-bold">
+                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-xs font-bold">
                   {post.author?.[0]}
                 </div>
                 <div>
-                  <p className="text-xs font-medium text-slate-900 dark:text-white">{post.author}</p>
-                  <p className="text-xs text-slate-500">{post.authorRole}</p>
+                  <p className="text-xs font-medium text-slate-300">{post.author}</p>
+                  <p className="text-xs text-slate-600">{post.authorRole}</p>
                 </div>
               </div>
-              <span className="text-blue-600 dark:text-blue-400 text-sm font-medium flex items-center gap-1">
-                Read <ArrowRight className="w-4 h-4" />
+              <span className="text-indigo-400 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                Read <ArrowRight className="w-3.5 h-3.5" />
               </span>
             </div>
           </div>
@@ -71,25 +71,26 @@ function BlogCard({ post, featured = false }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         whileHover={{ y: -3 }}
-        className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-100 dark:border-slate-700 shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 h-full flex flex-col"
+        className="bg-[#0D1117] rounded-2xl border border-slate-800 overflow-hidden hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/5 transition-all duration-300 h-full flex flex-col"
       >
-        <div className={`h-32 bg-gradient-to-br ${gradients[color] || gradients.blue} flex items-center justify-center relative`}>
-          <span className="text-white/20 text-6xl font-extrabold">{post.category?.[0]}</span>
+        <div className={`h-28 bg-gradient-to-br ${gradients[color] || gradients.indigo} flex items-center justify-center relative overflow-hidden`}>
+          <div className="absolute inset-0 bg-grid opacity-20" />
+          <span className="text-white/10 text-7xl font-display font-bold">{post.category?.[0]}</span>
         </div>
         <div className="p-5 flex flex-col flex-1">
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-2 mb-2.5">
             <Badge color={color}>{post.category}</Badge>
-            <span className="text-xs text-slate-400 flex items-center gap-1"><Clock className="w-3.5 h-3.5" />{post.readTime}m</span>
+            <span className="text-xs text-slate-600 flex items-center gap-1"><Clock className="w-3 h-3" />{post.readTime}m</span>
           </div>
-          <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+          <h3 className="text-sm font-display font-bold text-slate-200 mb-2 group-hover:text-indigo-300 transition-colors line-clamp-2">
             {post.title}
           </h3>
-          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed flex-1 line-clamp-2">{post.excerpt}</p>
-          <div className="flex items-center gap-2 mt-4 pt-4 border-t border-slate-100 dark:border-slate-700">
-            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-xs font-bold">
+          <p className="text-xs text-slate-500 leading-relaxed flex-1 line-clamp-2">{post.excerpt}</p>
+          <div className="flex items-center gap-2 mt-4 pt-3.5 border-t border-slate-800">
+            <div className="w-5 h-5 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-xs font-bold">
               {post.author?.[0]}
             </div>
-            <span className="text-xs text-slate-500 dark:text-slate-400">{post.author}</span>
+            <span className="text-xs text-slate-600">{post.author}</span>
           </div>
         </div>
       </motion.article>
@@ -106,7 +107,7 @@ export default function Blog() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  useEffect(() => { document.title = 'Blog — GrowthEdge Consulting'; }, []);
+  useEffect(() => { document.title = 'Insights & Research — NexaEdge Consulting'; }, []);
 
   const fetchPosts = useCallback(async () => {
     setLoading(true);
@@ -141,35 +142,36 @@ export default function Blog() {
   const gridPosts = featuredPost ? posts.slice(1) : posts;
 
   return (
-    <main className="pt-16">
+    <main className="pt-16 bg-[#06080F]">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-blue-900 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 text-blue-300 text-sm mb-6">
-            <Link to="/" className="hover:text-white transition-colors">Home</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-white">Blog</span>
+      <section className="relative bg-hero-dark py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-60" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-2 text-slate-600 text-sm mb-6">
+            <Link to="/" className="hover:text-slate-300 transition-colors">Home</Link>
+            <ChevronRight className="w-3.5 h-3.5" />
+            <span className="text-slate-400">Insights</span>
           </div>
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl sm:text-5xl font-extrabold text-white mb-4">
-            Strategic Insights
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl sm:text-5xl font-display font-bold text-white mb-4">
+            Insights & <span className="text-gradient">Research</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-xl text-blue-200 max-w-2xl mb-8">
-            Expert thinking on strategy, growth, and leadership from the GrowthEdge team.
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-lg text-slate-400 max-w-2xl mb-8">
+            Expert thinking on AI strategy, digital transformation, and enterprise growth from the NexaEdge research team.
           </motion.p>
 
           {/* Search */}
           <motion.form initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} onSubmit={handleSearch} className="flex gap-3 max-w-lg">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-600" />
               <input
                 type="text"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
                 placeholder="Search articles..."
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 text-white placeholder:text-blue-200/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/30"
+                className="w-full pl-10 pr-4 py-2.5 bg-slate-900/80 border border-slate-700 text-slate-300 placeholder:text-slate-600 rounded-xl focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 text-sm transition-colors"
               />
             </div>
-            <button type="submit" className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-xl transition-colors">
+            <button type="submit" className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-xl transition-colors text-sm">
               Search
             </button>
           </motion.form>
@@ -177,7 +179,7 @@ export default function Blog() {
       </section>
 
       {/* Content */}
-      <section className="py-16 bg-white dark:bg-slate-900">
+      <section className="py-16 bg-[#06080F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Filter */}
           <div className="flex flex-wrap gap-2 mb-10">
@@ -185,10 +187,10 @@ export default function Blog() {
               <button
                 key={cat}
                 onClick={() => handleCategoryChange(cat)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 ${
                   category === cat
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                    ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20'
+                    : 'bg-slate-900 border border-slate-800 text-slate-500 hover:border-slate-600 hover:text-slate-300'
                 }`}
               >
                 {cat}
@@ -200,37 +202,34 @@ export default function Blog() {
             <CardSkeleton count={6} />
           ) : posts.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-slate-500 dark:text-slate-400 text-lg">No articles found.</p>
-              <button onClick={() => { setSearch(''); setSearchInput(''); setCategory('All'); setPage(1); }} className="mt-4 text-blue-600 hover:underline text-sm">
+              <p className="text-slate-500 text-lg">No articles found.</p>
+              <button onClick={() => { setSearch(''); setSearchInput(''); setCategory('All'); setPage(1); }} className="mt-4 text-indigo-400 hover:underline text-sm">
                 Clear filters
               </button>
             </div>
           ) : (
             <>
-              {/* Featured */}
               {featuredPost && (
                 <div className="mb-10">
-                  <p className="text-xs font-semibold tracking-widest uppercase text-blue-600 dark:text-blue-400 mb-4">Featured Article</p>
+                  <p className="text-xs font-semibold tracking-widest uppercase text-indigo-500 mb-4">Featured Article</p>
                   <BlogCard post={featuredPost} featured />
                 </div>
               )}
 
-              {/* Grid */}
               {gridPosts.length > 0 && (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                   {gridPosts.map(post => (
                     <BlogCard key={post._id} post={post} />
                   ))}
                 </div>
               )}
 
-              {/* Pagination */}
               {totalPages > 1 && (
-                <div className="flex justify-center items-center gap-3 mt-12">
+                <div className="flex justify-center items-center gap-2 mt-12">
                   <button
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page === 1}
-                    className="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-800 text-slate-500 hover:text-slate-200 hover:border-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
@@ -238,10 +237,10 @@ export default function Blog() {
                     <button
                       key={p}
                       onClick={() => setPage(p)}
-                      className={`w-10 h-10 flex items-center justify-center rounded-lg text-sm font-medium transition-colors ${
+                      className={`w-9 h-9 flex items-center justify-center rounded-lg text-xs font-medium transition-all ${
                         p === page
-                          ? 'bg-blue-600 text-white'
-                          : 'border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                          ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20'
+                          : 'border border-slate-800 text-slate-500 hover:border-slate-600 hover:text-slate-200'
                       }`}
                     >
                       {p}
@@ -250,7 +249,7 @@ export default function Blog() {
                   <button
                     onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                     disabled={page === totalPages}
-                    className="w-10 h-10 flex items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                    className="w-9 h-9 flex items-center justify-center rounded-lg border border-slate-800 text-slate-500 hover:text-slate-200 hover:border-slate-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
                   >
                     <ChevronRight className="w-4 h-4" />
                   </button>

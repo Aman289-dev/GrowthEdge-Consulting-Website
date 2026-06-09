@@ -1,23 +1,27 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { Plus, Minus } from 'lucide-react';
 import SectionHeader from '../ui/SectionHeader';
 import { FAQ_ITEMS } from '../../utils/constants';
 
 function FAQItem({ question, answer, isOpen, onToggle }) {
   return (
-    <div className="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+    <div className={`rounded-xl border transition-all duration-200 overflow-hidden ${
+      isOpen ? 'border-indigo-500/30 bg-slate-900/60' : 'border-slate-800 bg-[#0D1117] hover:border-slate-700'
+    }`}>
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between p-5 text-left bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-750 transition-colors"
+        className="w-full flex items-center justify-between p-5 text-left transition-colors"
       >
-        <span className="font-semibold text-slate-900 dark:text-white pr-4">{question}</span>
+        <span className="font-medium text-slate-200 pr-4 text-sm leading-relaxed">{question}</span>
         <motion.div
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="flex-shrink-0"
+          animate={{ rotate: isOpen ? 0 : 0 }}
+          className="flex-shrink-0 w-7 h-7 rounded-lg bg-slate-800 flex items-center justify-center"
         >
-          <ChevronDown className="w-5 h-5 text-slate-500 dark:text-slate-400" />
+          {isOpen
+            ? <Minus className="w-3.5 h-3.5 text-indigo-400" />
+            : <Plus className="w-3.5 h-3.5 text-slate-500" />
+          }
         </motion.div>
       </button>
       <AnimatePresence>
@@ -26,9 +30,9 @@ function FAQItem({ question, answer, isOpen, onToggle }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            transition={{ duration: 0.22, ease: 'easeInOut' }}
           >
-            <div className="px-5 pb-5 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            <div className="px-5 pb-5 text-slate-500 text-sm leading-relaxed">
               {answer}
             </div>
           </motion.div>
@@ -42,19 +46,19 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
-    <section className="py-20 bg-white dark:bg-slate-900">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#06080F]">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           eyebrow="FAQ"
           title="Frequently Asked Questions"
-          description="Everything you need to know about working with GrowthEdge."
+          description="Everything you need to know about working with NexaEdge."
         />
-        <div className="mt-12 space-y-3">
-          {FAQ_ITEMS.map((item, i) => (
+        <div className="mt-10 space-y-2.5">
+          {FAQ_ITEMS.map((faq, i) => (
             <FAQItem
               key={i}
-              question={item.question}
-              answer={item.answer}
+              question={faq.question}
+              answer={faq.answer}
               isOpen={openIndex === i}
               onToggle={() => setOpenIndex(openIndex === i ? null : i)}
             />

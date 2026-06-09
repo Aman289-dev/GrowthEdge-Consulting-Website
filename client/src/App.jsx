@@ -14,6 +14,7 @@ import CaseStudies from './pages/CaseStudies';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
+import Pricing from './pages/Pricing';
 import NotFound from './pages/NotFound';
 
 function ScrollToTop() {
@@ -37,6 +38,7 @@ function AppInner() {
         <Route path="/about" element={<About onBookConsultation={() => setModalOpen(true)} />} />
         <Route path="/services" element={<ServicesPage onBookConsultation={() => setModalOpen(true)} />} />
         <Route path="/case-studies" element={<CaseStudies />} />
+        <Route path="/pricing" element={<Pricing onBookConsultation={() => setModalOpen(true)} />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/contact" element={<Contact />} />
@@ -52,17 +54,18 @@ function AppInner() {
         toastOptions={{
           duration: 4000,
           style: {
-            background: '#1E293B',
-            color: '#F1F5F9',
+            background: '#0D1117',
+            color: '#E2E8F0',
             borderRadius: '12px',
-            border: '1px solid #334155',
-            fontSize: '14px',
+            border: '1px solid #1A2236',
+            fontSize: '13px',
+            fontFamily: 'Inter, sans-serif',
           },
           success: {
-            iconTheme: { primary: '#22C55E', secondary: '#F1F5F9' },
+            iconTheme: { primary: '#22C55E', secondary: '#0D1117' },
           },
           error: {
-            iconTheme: { primary: '#EF4444', secondary: '#F1F5F9' },
+            iconTheme: { primary: '#EF4444', secondary: '#0D1117' },
           },
         }}
       />

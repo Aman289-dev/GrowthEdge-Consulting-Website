@@ -1,19 +1,21 @@
 import { clsx } from 'clsx';
 
 const colors = {
-  blue: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300',
-  green: 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300',
-  amber: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300',
-  purple: 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300',
-  indigo: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300',
-  slate: 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300',
-  cyan: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900/40 dark:text-cyan-300',
-  orange: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300',
+  blue:   'bg-blue-500/10 text-blue-400 border border-blue-500/20',
+  green:  'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20',
+  amber:  'bg-amber-500/10 text-amber-400 border border-amber-500/20',
+  purple: 'bg-purple-500/10 text-purple-400 border border-purple-500/20',
+  indigo: 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/20',
+  slate:  'bg-slate-800 text-slate-400 border border-slate-700',
+  cyan:   'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20',
+  orange: 'bg-orange-500/10 text-orange-400 border border-orange-500/20',
+  violet: 'bg-violet-500/10 text-violet-400 border border-violet-500/20',
+  rose:   'bg-rose-500/10 text-rose-400 border border-rose-500/20',
 };
 
-export default function Badge({ children, color = 'blue', className = '' }) {
+export default function Badge({ children, color = 'indigo', className = '' }) {
   return (
-    <span className={clsx('inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold', colors[color], className)}>
+    <span className={clsx('inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium', colors[color], className)}>
       {children}
     </span>
   );

@@ -1,26 +1,30 @@
 const clients = [
-  'Meridian Group', 'NexMart', 'Vantage Corp', 'Brightline', 'Cortex Tech',
-  'Apex Capital', 'Summit Partners', 'Horizon Ventures', 'PrecisionCraft', 'TrueNorth Co',
-  'Meridian Group', 'NexMart', 'Vantage Corp', 'Brightline', 'Cortex Tech',
-  'Apex Capital', 'Summit Partners', 'Horizon Ventures', 'PrecisionCraft', 'TrueNorth Co',
+  'Stripe', 'Palantir', 'Databricks', 'Snowflake', 'Confluent',
+  'HashiCorp', 'MongoDB', 'Elastic', 'Twilio', 'Cloudflare',
+  'Stripe', 'Palantir', 'Databricks', 'Snowflake', 'Confluent',
+  'HashiCorp', 'MongoDB', 'Elastic', 'Twilio', 'Cloudflare',
 ];
 
 export default function ClientLogos() {
   return (
-    <section className="py-14 bg-slate-50 dark:bg-slate-900/70 border-y border-slate-100 dark:border-slate-800 overflow-hidden">
+    <section className="py-14 bg-[#06080F] border-y border-slate-800/40 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 mb-8 text-center">
-        <p className="text-sm font-semibold tracking-widest uppercase text-slate-400 dark:text-slate-500">
-          Trusted by industry leaders
+        <p className="text-xs font-semibold tracking-widest uppercase text-slate-600">
+          Trusted by world-class organizations
         </p>
       </div>
       <div className="relative overflow-hidden">
-        <div className="flex animate-marquee gap-12 whitespace-nowrap">
+        {/* Left fade */}
+        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#06080F] to-transparent z-10 pointer-events-none" />
+        {/* Right fade */}
+        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#06080F] to-transparent z-10 pointer-events-none" />
+        <div className="flex animate-marquee gap-4 whitespace-nowrap">
           {clients.map((name, i) => (
             <div
               key={i}
-              className="flex-shrink-0 px-8 py-3 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm"
+              className="flex-shrink-0 px-7 py-2.5 bg-slate-900/50 rounded-lg border border-slate-800/60"
             >
-              <span className="text-slate-500 dark:text-slate-400 font-semibold text-sm">{name}</span>
+              <span className="text-slate-600 font-semibold text-sm tracking-wide">{name}</span>
             </div>
           ))}
         </div>

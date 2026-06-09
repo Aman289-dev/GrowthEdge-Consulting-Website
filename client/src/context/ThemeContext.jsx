@@ -4,19 +4,21 @@ const ThemeContext = createContext(null);
 
 export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('growthEdge_theme');
+    const saved = localStorage.getItem('nexaEdge_theme');
     if (saved) return saved === 'dark';
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return true; // default to dark mode
   });
 
   useEffect(() => {
     const root = document.documentElement;
     if (isDark) {
       root.classList.add('dark');
-      localStorage.setItem('growthEdge_theme', 'dark');
+      root.classList.remove('light');
+      localStorage.setItem('nexaEdge_theme', 'dark');
     } else {
       root.classList.remove('dark');
-      localStorage.setItem('growthEdge_theme', 'light');
+      root.classList.add('light');
+      localStorage.setItem('nexaEdge_theme', 'light');
     }
   }, [isDark]);
 

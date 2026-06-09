@@ -1,37 +1,48 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Phone } from 'lucide-react';
+import { ArrowRight, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Button from '../ui/Button';
 
 export default function ContactCTA({ onBookConsultation }) {
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-900 via-blue-800 to-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className="py-24 bg-[#06080F] relative overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[600px] h-[400px] bg-indigo-600/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6">
-            Ready to Transform Your Business?
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+            Limited Spots Available — Q3 2026
+          </span>
+
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-tight">
+            Ready to Build Your{' '}
+            <span className="text-gradient">Competitive Edge?</span>
           </h2>
-          <p className="text-lg text-blue-200 max-w-2xl mx-auto mb-10">
-            Let's discuss how GrowthEdge can help you achieve breakthrough results. Our first conversation is always free.
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+            Join 750+ enterprises that trusted NexaEdge to transform their strategy into measurable results. Your first session is complimentary — no commitments, just clarity.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button
-              variant="white"
+              variant="primary"
               size="lg"
               icon={ArrowRight}
               iconPosition="right"
               onClick={onBookConsultation}
             >
-              Book a Consultation
+              Book Strategy Call
             </Button>
             <Link to="/contact">
-              <Button variant="white-outline" size="lg" icon={Phone} iconPosition="left">
-                Get in Touch
+              <Button variant="secondary" size="lg" icon={MessageSquare} iconPosition="left">
+                Send a Message
               </Button>
             </Link>
           </div>

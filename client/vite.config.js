@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
   define: envWithImportMeta,
   server: {
     host: "0.0.0.0",
-    port: 3012,
+    port: 5081,
     strictPort: true,
     allowedHosts: ["6a26a618470305a2c80b2da1.icod.ai"],
     watch:{
